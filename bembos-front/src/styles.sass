@@ -1,0 +1,319 @@
+// Global branding variables and small utility classes for Bembos
+
+// Palette (from user)
+$bembos-blue: #0014B8
+$bembos-blue-2: #0026FF
+$bembos-yellow: #FFD200
+$bembos-yellow-2: #FFC800
+$bembos-red: #E30613
+$bembos-red-2: #FF1D25
+$bembos-white: #FFFFFF
+$bembos-cream: #F6E9D6
+$bembos-brown: #7A4B2E
+
+// Typography
+$bembos-title-font: 'Oswald', Arial, sans-serif
+$bembos-body-font: 'Poppins', 'Helvetica Neue', Arial, sans-serif
+
+// Base with smooth scrolling
+html
+	scroll-behavior: smooth
+	
+html, body
+	height: 100%
+	margin: 0
+	font-family: $bembos-body-font
+	background: $bembos-blue
+	color: $bembos-white
+	overflow-x: hidden
+
+// Universal box sizing
+*, *::before, *::after
+	box-sizing: border-box
+
+// App container adjustments
+app-root
+	display: block
+	min-height: 100vh
+
+// Smooth transitions for all interactive elements
+a, button
+	transition: all 0.3s ease
+
+// Utilities
+.container
+	max-width: 1100px
+	margin: 0 auto
+	padding: 1rem
+
+.hero
+	display: flex
+	align-items: center
+	justify-content: space-between
+	gap: 1.5rem
+	padding: 3rem 1rem
+
+.hero__left
+	flex: 1
+
+.brand-title
+	font-family: $bembos-title-font
+	font-weight: 700
+	font-size: 3rem
+	margin: 0 0 0.5rem 0
+	letter-spacing: -0.02em
+
+.brand-subtitle
+	margin: 0 0 1.25rem 0
+	color: rgba($bembos-white, 0.95)
+
+.badge--promo
+	display: inline-block
+	background: linear-gradient(90deg, $bembos-red, $bembos-red-2)
+	color: $bembos-white
+	padding: 0.35rem 0.75rem
+	border-radius: 999px
+	font-weight: 700
+	font-size: 0.875rem
+
+.btn
+	display: inline-block
+	border: 0
+	cursor: pointer
+	padding: 0.75rem 1.25rem
+	border-radius: 0.5rem
+	font-weight: 700
+	text-decoration: none
+	text-align: center
+
+.btn--primary
+	background: linear-gradient(90deg, $bembos-yellow, $bembos-yellow-2)
+	color: $bembos-blue
+
+.btn--secondary
+	background: transparent
+	color: $bembos-white
+	border: 1px solid rgba($bembos-white, 0.12)
+
+// Card for listings
+.card
+	background: rgba($bembos-white, 0.04)
+	padding: 1rem
+	border-radius: 0.5rem
+	box-shadow: 0 6px 18px rgba(0,0,0,0.25)
+
+// Small responsive tweaks
+@media (max-width: 800px)
+	.hero
+		flex-direction: column
+		text-align: center
+	.brand-title
+		font-size: 2.25rem
+
+// Header / Topbar (global defaults; LayoutComponent will override visuals)
+.topbar
+	background: transparent
+	color: $bembos-white
+	.topbar-inner
+		display: flex
+		align-items: center
+		justify-content: space-between
+		padding: 0.5rem 1rem
+		.brand-logo
+			height: 56px
+		.main-nav
+			display: flex
+			align-items: center
+			gap: 0.5rem
+			a
+				color: $bembos-blue
+				margin: 0 0.5rem
+				text-decoration: none
+				font-weight: 600
+				text-transform: uppercase
+				font-size: 0.95rem
+		.actions
+			display: flex
+			align-items: center
+			gap: 0.75rem
+	.promo-strip
+		background: $bembos-yellow
+		color: $bembos-blue
+		text-align: center
+		padding: 0.5rem
+		font-weight: 700
+
+// Hero banner
+.hero-banner
+	background: $bembos-cream
+	color: $bembos-blue-2
+	padding: 2rem 0
+	.hero-inner
+		display: flex
+		align-items: center
+		gap: 2rem
+	.hero-copy
+		flex: 1
+	.hero-badge
+		font-weight: 800
+		font-size: 2.25rem
+		color: $bembos-blue-2
+	.hero-title
+		font-family: $bembos-title-font
+		font-size: 3.5rem
+		margin: 0.5rem 0
+		letter-spacing: -0.03em
+	.hero-cta .btn--primary
+		font-size: 1rem
+		padding: 0.9rem 1.5rem
+	.hero-media
+		width: 420px
+		.hero-image
+			width: 100%
+			border-radius: 8px
+			object-fit: cover
+
+// Categories
+.categories
+	display: flex
+	gap: 0.75rem
+	padding: 1rem 0
+	.pill
+		border-radius: 999px
+		padding: 0.6rem 1rem
+		background: $bembos-white
+		color: $bembos-blue
+		border: 1px solid rgba(0,0,0,0.06)
+		font-weight: 700
+
+// Product strip
+.product-strip
+	display: grid
+	grid-template-columns: repeat(4, 1fr)
+	gap: 1rem
+	margin: 1.5rem 0
+	.product
+		text-align: center
+		img
+			width: 100%
+			height: 160px
+			object-fit: cover
+			border-radius: 8px
+		h4
+			margin: 0.5rem 0 0 0
+			color: $bembos-blue-2
+		.price
+			font-weight: 800
+			color: $bembos-red
+
+@media (max-width: 900px)
+	.hero-inner
+		flex-direction: column
+	.product-strip
+		grid-template-columns: repeat(2, 1fr)
+
+// --- Product card normalization for Menu view ---
+// Make product cards look identical: same card height, image sizing, price/add placement.
+// Also hide the heart/favorite icon so only the add control remains.
+
+// Target common product card class variations used in templates
+.product, .product-card, .productItem, .menu-card, .card.product
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+	background: #fff
+	border-radius: 10px
+	box-shadow: 0 10px 30px rgba(0,0,0,0.06)
+	padding: 0
+	overflow: hidden
+	height: 420px
+	position: relative
+
+	// smooth transform for hover/interaction
+	transition: transform 220ms ease, box-shadow 220ms ease
+
+.product:hover, .product-card:hover, .card.product:hover, .productItem:hover, .menu-card:hover
+	transform: scale(1.035)
+	box-shadow: 0 18px 40px rgba(0,0,0,0.12)
+
+.product img, .product-card img, .card.product img, .productItem img
+	width: 100%
+	height: 220px
+	object-fit: cover
+	display: block
+
+	// slight zoom on image when parent hovered
+	transition: transform 320ms ease
+
+.product:hover img, .product-card:hover img, .card.product:hover img, .productItem:hover img
+	transform: scale(1.04)
+
+.product .content, .product-card .content, .card.product .content
+	padding: 1rem 1rem 1.25rem 1rem
+	flex: 1 1 auto
+	display: flex
+	flex-direction: column
+	justify-content: space-between
+
+.product h4, .product-card h4, .card.product h4
+	margin: 0 0 0.5rem 0
+	font-family: $bembos-title-font
+	font-size: 1.05rem
+	color: $bembos-blue-2
+
+.product p, .product-card p, .card.product p
+	margin: 0
+	color: #6b7280
+	font-size: 0.95rem
+
+.product .meta, .product-card .meta, .card.product .meta
+	display: flex
+	align-items: center
+	justify-content: space-between
+	margin-top: 0.75rem
+
+.product .price, .product-card .price, .card.product .price
+	font-weight: 800
+	color: $bembos-red
+	font-size: 1.05rem
+
+// Add button consistent circular style (bottom-right)
+.product .add-btn, .product-card .add-btn, .card.product .add-btn, .btn-add
+	position: absolute
+	right: 12px
+	bottom: 14px
+	width: 44px
+	height: 44px
+	border-radius: 999px
+	background: $bembos-blue-2
+	color: #fff
+	display: inline-flex
+	align-items: center
+	justify-content: center
+	box-shadow: 0 6px 18px rgba(0,0,0,0.12)
+	border: 3px solid rgba(255,255,255,0.12)
+	font-size: 1.2rem
+	cursor: pointer
+
+// Hide heart / favorite icons so only add remains
+.product .heart, .product-card .heart, .card.product .heart,
+.product .favorite, .favorite, .like, .wishlist, .icon-heart
+	display: none !important
+
+@media (max-width: 900px)
+	.product, .product-card, .card.product
+		height: auto
+		img
+			height: 180px
+
+// Respect users' reduced motion preference
+@media (prefers-reduced-motion: reduce)
+	.product, .product-card, .productItem, .menu-card, .card.product
+		transition: none
+		transform: none
+
+	.product img, .product-card img, .card.product img, .productItem img
+		transition: none
+		transform: none
+
+

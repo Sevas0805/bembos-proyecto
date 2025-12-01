@@ -1,0 +1,380 @@
+/* Modern layout styles with animations and glassmorphism effects */
+
+.topbar
+  background: rgba(255, 255, 255, 0.95)
+  backdrop-filter: blur(10px)
+  border-bottom: 1px solid rgba(0, 20, 184, 0.1)
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08)
+  position: sticky
+  top: 0
+  z-index: 1000
+  transition: all 0.3s ease
+  .topbar-inner
+    position: relative
+    display: flex
+    align-items: center
+    justify-content: flex-start
+    padding: 0.75rem 1rem
+    gap: 1rem
+    .brand
+      display: flex
+      align-items: center
+      gap: 0.75rem
+      .brand-logo
+        height: 64px
+        transition: transform 0.3s ease
+        &:hover
+          transform: scale(1.05) rotate(2deg)
+    .nav-actions
+      position: absolute
+      right: 0.5rem
+      top: 50%
+      transform: translateY(-50%)
+      display: flex
+      align-items: center
+      gap: 1rem
+      .main-nav
+        display: flex
+        gap: 0.75rem
+        a
+          color: #0014B8
+          font-weight: 700
+          text-decoration: none
+          letter-spacing: 0.02em
+          padding: 0.5rem 1rem
+          border-radius: 8px
+          transition: all 0.3s ease
+          position: relative
+          &::after
+            content: ''
+            position: absolute
+            bottom: 0
+            left: 50%
+            transform: translateX(-50%)
+            width: 0
+            height: 3px
+            background: linear-gradient(90deg, #FFD200, #FFC800)
+            transition: width 0.3s ease
+          &:hover
+            background: rgba(0, 20, 184, 0.05)
+            &::after
+              width: 80%
+      .actions
+        display: flex
+        gap: 0.75rem
+        align-items: center
+        .user-welcome
+          color: #0014B8
+          font-weight: 600
+          padding: 0.6rem 1rem
+          background: rgba(255, 210, 0, 0.1)
+          border-radius: 20px
+          font-size: 0.9rem
+        .btn--secondary
+          background: linear-gradient(135deg, rgba(255, 210, 0, 0.1), rgba(255, 200, 0, 0.2))
+          color: #0014B8
+          border: 2px solid #FFD200
+          padding: 0.6rem 1.2rem
+          border-radius: 25px
+          font-weight: 700
+          transition: all 0.3s ease
+          box-shadow: 0 4px 15px rgba(255, 210, 0, 0.2)
+          &:hover
+            background: linear-gradient(135deg, #FFD200, #FFC800)
+            transform: translateY(-2px)
+            box-shadow: 0 6px 25px rgba(255, 210, 0, 0.4)
+        .cart
+          background: linear-gradient(135deg, #0014B8, #0026FF)
+          color: white
+          padding: 0.6rem 1.2rem
+          border-radius: 25px
+          font-weight: 700
+          box-shadow: 0 4px 15px rgba(0, 20, 184, 0.3)
+          transition: all 0.3s ease
+          cursor: pointer
+          text-decoration: none
+          position: relative
+          &:hover
+            transform: translateY(-2px)
+            box-shadow: 0 6px 25px rgba(0, 20, 184, 0.5)
+          &.cart-disabled
+            background: linear-gradient(135deg, #999, #777)
+            cursor: not-allowed
+            opacity: 0.6
+            &:hover
+              transform: none
+              box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2)
+        .cart-badge
+          position: absolute
+          top: -8px
+          right: -8px
+          background: linear-gradient(135deg, #FFD200, #FFC800)
+          color: #0014B8
+          font-size: 0.75rem
+          font-weight: 800
+          padding: 0.25rem 0.5rem
+          border-radius: 12px
+          min-width: 20px
+          text-align: center
+          box-shadow: 0 2px 8px rgba(255, 210, 0, 0.5)
+          animation: pulse 2s infinite
+
+.promo-strip
+  background: linear-gradient(90deg, #FFD200, #FFC800, #FFD200)
+  background-size: 200% 100%
+  animation: shimmer 3s ease-in-out infinite
+  color: #0014B8
+  padding: 10px 12px
+  text-align: center
+  font-weight: 800
+  letter-spacing: 0.5px
+  box-shadow: 0 2px 10px rgba(255, 210, 0, 0.3)
+
+@keyframes shimmer
+  0%, 100%
+    background-position: 0% 50%
+  50%
+    background-position: 100% 50%
+
+.hero-banner
+  padding: 3rem 0
+  background: linear-gradient(135deg, #0014B8 0%, #0026FF 50%, #0014B8 100%)
+  position: relative
+  overflow: hidden
+  &::before
+    content: ''
+    position: absolute
+    top: -50%
+    left: -50%
+    width: 200%
+    height: 200%
+    background: radial-gradient(circle, rgba(255, 210, 0, 0.1) 0%, transparent 70%)
+    animation: pulse 8s ease-in-out infinite
+
+@keyframes pulse
+  0%, 100%
+    transform: translate(0, 0) scale(1)
+  50%
+    transform: translate(10%, 10%) scale(1.1)
+
+.hero-inner
+  position: relative
+  z-index: 1
+  display: flex
+  align-items: center
+  gap: 3rem
+  .hero-copy
+    flex: 1
+    animation: slideInLeft 0.8s ease-out
+    .hero-badge
+      display: inline-block
+      background: linear-gradient(135deg, #FFD200, #FFC800)
+      color: #0014B8
+      padding: 0.5rem 1.5rem
+      border-radius: 25px
+      font-weight: 800
+      font-size: 0.9rem
+      margin-bottom: 1rem
+      box-shadow: 0 4px 15px rgba(255, 210, 0, 0.4)
+      animation: bounce 2s ease-in-out infinite
+    .hero-title
+      font-family: 'Oswald', Arial, sans-serif
+      font-size: 4rem
+      margin: 0 0 1rem 0
+      color: white
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3)
+      line-height: 1.1
+    .hero-description
+      font-size: 1.2rem
+      color: rgba(255, 255, 255, 0.9)
+      margin: 0 0 2rem 0
+      line-height: 1.6
+      max-width: 500px
+    .hero-cta
+      display: flex
+      gap: 1rem
+      .btn--primary
+        background: linear-gradient(135deg, #FFD200, #FFC800)
+        color: #0014B8
+        padding: 1rem 2.5rem
+        border-radius: 30px
+        font-weight: 800
+        font-size: 1.1rem
+        border: none
+        cursor: pointer
+        box-shadow: 0 8px 25px rgba(255, 210, 0, 0.4)
+        transition: all 0.3s ease
+        text-decoration: none
+        display: inline-block
+        &:hover
+          transform: translateY(-3px) scale(1.05)
+          box-shadow: 0 12px 35px rgba(255, 210, 0, 0.6)
+      .btn--secondary-hero
+        background: rgba(255, 255, 255, 0.1)
+        backdrop-filter: blur(10px)
+        color: white
+        padding: 1rem 2rem
+        border-radius: 30px
+        font-weight: 700
+        border: 2px solid rgba(255, 255, 255, 0.3)
+        cursor: pointer
+        transition: all 0.3s ease
+        text-decoration: none
+        display: inline-block
+        &:hover
+          background: rgba(255, 255, 255, 0.2)
+          border-color: rgba(255, 255, 255, 0.5)
+          transform: translateY(-3px)
+  .hero-media
+    flex: 1
+    animation: slideInRight 0.8s ease-out
+    .hero-image
+      width: 100%
+      height: auto
+      filter: drop-shadow(0 15px 35px rgba(0, 0, 0, 0.3))
+      animation: float 3s ease-in-out infinite
+
+@keyframes slideInLeft
+  from
+    opacity: 0
+    transform: translateX(-50px)
+  to
+    opacity: 1
+    transform: translateX(0)
+
+@keyframes slideInRight
+  from
+    opacity: 0
+    transform: translateX(50px)
+  to
+    opacity: 1
+    transform: translateX(0)
+
+@keyframes bounce
+  0%, 100%
+    transform: translateY(0)
+  50%
+    transform: translateY(-5px)
+
+@keyframes float
+  0%, 100%
+    transform: translateY(0) rotate(0deg)
+  50%
+    transform: translateY(-20px) rotate(2deg)
+
+/* Footer styles with modern effects */
+.site-footer
+  margin-top: 4rem
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)
+  color: #333
+  border-top: 3px solid #FFD200
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05)
+  .footer-inner
+    display: flex
+    gap: 3rem
+    align-items: flex-start
+    padding: 3rem 0
+    .footer-brand
+      display: flex
+      flex-direction: column
+      gap: 1.5rem
+      .footer-logo
+        height: 64px
+        transition: transform 0.3s ease
+        filter: drop-shadow(0 4px 10px rgba(0, 20, 184, 0.2))
+        &:hover
+          transform: scale(1.1) rotate(-2deg)
+    .follow
+      strong
+        color: #0014B8
+        font-size: 1.1rem
+        display: block
+        margin-bottom: 0.8rem
+      .social
+        display: flex
+        gap: 0.75rem
+        .social-icon
+          display: inline-flex
+          align-items: center
+          justify-content: center
+          width: 44px
+          height: 44px
+          border-radius: 50%
+          background: linear-gradient(135deg, #0014B8, #0026FF)
+          color: white
+          text-decoration: none
+          font-weight: 700
+          font-size: 1.2rem
+          box-shadow: 0 4px 15px rgba(0, 20, 184, 0.3)
+          transition: all 0.3s ease
+          position: relative
+          overflow: hidden
+          &::before
+            content: ''
+            position: absolute
+            top: 50%
+            left: 50%
+            width: 0
+            height: 0
+            border-radius: 50%
+            background: rgba(255, 210, 0, 0.3)
+            transform: translate(-50%, -50%)
+            transition: width 0.3s ease, height 0.3s ease
+          &:hover
+            transform: translateY(-5px) scale(1.1)
+            box-shadow: 0 8px 25px rgba(0, 20, 184, 0.5)
+            &::before
+              width: 100%
+              height: 100%
+    .footer-help, .footer-contact
+      h4
+        margin: 0 0 1rem 0
+        color: #0014B8
+        font-size: 1.3rem
+        font-weight: 700
+      ul
+        margin: 0
+        padding: 0
+        list-style: none
+        li
+          margin-bottom: 0.75rem
+          color: #555
+          a
+            color: #555
+            text-decoration: none
+            transition: all 0.3s ease
+            padding: 0.3rem 0
+            display: inline-block
+            position: relative
+            &::after
+              content: '→'
+              opacity: 0
+              margin-left: 0
+              transition: all 0.3s ease
+            &:hover
+              color: #0014B8
+              font-weight: 600
+              padding-left: 8px
+              &::after
+                opacity: 1
+                margin-left: 8px
+  .footer-bottom
+    background: rgba(0, 20, 184, 0.05)
+    padding: 1.5rem 0
+    text-align: center
+    p
+      margin: 0
+      color: #666
+      font-size: 0.95rem
+
+.footer-bottom
+  background: transparent
+  padding: 1rem 0
+  color: #666
+  text-align: left
+
+@media (max-width: 900px)
+  .site-footer .footer-inner
+    flex-direction: column
+    .footer-help
+      margin-left: 0
