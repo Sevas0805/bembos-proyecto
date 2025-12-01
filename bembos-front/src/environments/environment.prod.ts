@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: '/api' // En producción, usa el mismo dominio
+  apiUrl: 'https://bembos-proyecto-production.up.railway.app/api'
 };
